@@ -6,7 +6,7 @@ const routes = [
         path: "/:step",
         element: <App />,
         errorElement: <ErrorPage />
-    },
+    }
 ]
 
 export default routes;
