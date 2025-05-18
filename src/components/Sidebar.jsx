@@ -1,6 +1,6 @@
 import Step from "./Step"
 
-function Sidebar(props) {
+function Sidebar() {
     return (
         <div className="sidebar">
             <Step />

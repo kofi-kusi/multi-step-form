@@ -2,13 +2,14 @@
   background-color: hsl(0, 100%, 100%);
   border-radius: 15px;
   height: 610px;
-  width: 800px;
+  width: 900px;
   display: flex;
   padding: 20px;
   gap: 1rem;
   box-shadow: 2px 5px 50px hsl(231, 11%, 63%);
 }
 
+/* Sidebar styling */
 .container--sidebar {
   width: 40%;
   background-image: url(./assets/images/bg-sidebar-desktop.svg);
@@ -50,4 +51,62 @@
 .info {
   font-family: ubuntu-bold;
   color: hsl(231, 100%, 99%);
+}
+
+
+/* Main content styling */
+/* Step 1 */
+.container--main {
+  color: hsl(213, 96%, 18%);
+}
+
+.instructions {
+  color: hsl(231, 11%, 63%);
+  font-family: ubuntu-medium;
+}
+
+form {
+  margin: 50px 0;
+}
+
+.form--input {
+  margin-bottom: 30px;
+  
+}
+
+
+input {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 10px;
+  margin-top: 10px;
+  font-family: ubuntu-medium;
+  font-size: 1.1rem;
+  padding: 5px 15px;
+  color: hsl(213, 96%, 18%);
+}
+
+input:active {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+
+.steps--navigator {
+  width: 100%;
+  display: flex;
+  
+}
+
+.next-step {
+  width: 150px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 100%, 100%);
+  font-family: ubuntu-medium;
+  font-size: large;
+  align-self: flex-end;
+  cursor: pointer;
 }
