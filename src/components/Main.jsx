@@ -7,17 +7,18 @@ import Step4 from "../steps/Step4"
 
 function Main() {
     const {step} = useParams()
+    const isNotFirstStep = step !== "step1"
     return (
         <>
         {
             step === "step2" ? (
-                <Step2 />
+                <Step2 isNotFirstStep={isNotFirstStep}/>
             ) : step === "step3" ? (
-                <Step3 />
+                <Step3 isNotFirstStep={isNotFirstStep}/>
             ) : step === "step4" ? (
-                <Step4 />
+                <Step4 isNotFirstStep={isNotFirstStep}/>
             ) : (
-                <Step1 />
+                <Step1 isNotFirstStep={isNotFirstStep}/>
             )
         }
         </>
