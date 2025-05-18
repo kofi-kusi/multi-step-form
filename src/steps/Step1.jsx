@@ -1,5 +1,7 @@
 function Step1() {
-  return <>This is step 1</>;
+  return (
+    <div>This is page 1</div>
+  )
 }
 
 export default Step1;
