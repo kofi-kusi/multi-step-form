@@ -1,0 +1,28 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: ubuntu-bold;
+  src: url(./assets/fonts/Ubuntu-Bold.ttf);
+}
+
+@font-face {
+  font-family: ubuntu-medium;
+  src: url(./assets/fonts/Ubuntu-Medium.ttf);
+}
+
+@font-face {
+  font-family: ubuntu-regular;
+  src: url(./assets/fonts/Ubuntu-Regular.ttf);
+}
+
+body {
+  font-family: ubuntu-regular;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-color: hsl(218, 100%, 97%)
+}
