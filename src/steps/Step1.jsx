@@ -1,6 +1,16 @@
+import Header from "../components/Header"
+
 function Step1() {
   return (
-    <div>This is page 1</div>
+    <>
+    <Header 
+      title="Personal Info"
+      instructions="Please provide your name, email address, and phone number."
+    />
+    <form action="">
+      
+    </form>
+    </>
   )
 }
 
