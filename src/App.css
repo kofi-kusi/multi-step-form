@@ -57,6 +57,8 @@
 /* Step 1 */
 .container--main {
   color: hsl(213, 96%, 18%);
+  padding: 0 30px;
+  width: 75%;
 }
 
 .instructions {
@@ -96,14 +98,8 @@ input:active {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: ubuntu-medium;
-  font-size: large;
-  
 }
 
-.steps--navigator .next-step{
-  align-self: flex-end;
-}
 
 .next-step {
   display: flex;
@@ -117,10 +113,14 @@ input:active {
   background-color: hsl(213, 96%, 18%);
   color: hsl(0, 100%, 100%);
   cursor: pointer;
+  font-family: ubuntu-medium;
+  font-size: large;
 }
 
 .prev-step {
   text-decoration: none;
   color: hsl(213, 96%, 18%);
   margin-right: auto;
+  font-family: ubuntu-medium;
+  font-size: large;
 }

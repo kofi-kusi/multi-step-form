@@ -11,7 +11,7 @@ function Step1(props) {
     console.log(name)
     formElement.reset()
   }
-
+  console.log(props)
   
 
   return (
@@ -51,8 +51,11 @@ function Step1(props) {
           />
         </div>
       </form>
-      <div className="buttons">
-        <StepsNavigator isNotFirstStep={props.isNotFirstStep}/>
+      <div className="steps--navigator">
+        <StepsNavigator isNotFirstStep={props.isNotFirstStep}
+          nextStep={props.nextStep}
+        prevStep={props.prevStep}
+        />
       </div>
     </>
   );
