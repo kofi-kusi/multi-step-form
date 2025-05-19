@@ -94,18 +94,33 @@ input:active {
 .steps--navigator {
   width: 100%;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: ubuntu-medium;
+  font-size: large;
   
 }
 
+.steps--navigator .next-step{
+  align-self: flex-end;
+}
+
 .next-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   width: 150px;
   height: 60px;
   border: none;
   border-radius: 10px;
   background-color: hsl(213, 96%, 18%);
   color: hsl(0, 100%, 100%);
-  font-family: ubuntu-medium;
-  font-size: large;
-  align-self: flex-end;
   cursor: pointer;
+}
+
+.prev-step {
+  text-decoration: none;
+  color: hsl(213, 96%, 18%);
+  margin-right: auto;
 }
