@@ -1,26 +1,27 @@
 import Header from "../components/Header";
 import StepsNavigator from "../components/StepsNavigator";
-
+import { useNavigate } from "react-router-dom";
 function Step1(props) {
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
-    event.preventDefault;
+    event.preventDefault();
     const formElement = event.currentTarget;
     const formData = new FormData(formElement)
     const name = formData.get("name")
     console.log(name)
     formElement.reset()
+    navigate(props.nextStep);
   }
   console.log(props)
   
-
   return (
     <>
       <Header
         title="Personal Info"
         instructions="Please provide your name, email address, and phone number."
       />
-      <form onSubmit={handleSubmit} action="post">
+      <form onSubmit={handleSubmit} method="post">
         <div className="form--input">
           <label htmlFor="name">Name</label>
           <input
@@ -50,13 +51,11 @@ function Step1(props) {
           required
           />
         </div>
+        <div className="steps--navigator">
+
+        <button className="next-step">Next Step</button>
+        </div>
       </form>
-      <div className="steps--navigator">
-        <StepsNavigator isNotFirstStep={props.isNotFirstStep}
-          nextStep={props.nextStep}
-        prevStep={props.prevStep}
-        />
-      </div>
     </>
   );
 }
