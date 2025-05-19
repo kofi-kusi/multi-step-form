@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
 
 function App() {
-  const [activeStep, setActiveStep] = useState("step1");
+  const { step } = useParams();
+  
   return (
     <div className="container">
       <div className="container--sidebar">
-        <Sidebar activeStep={activeStep} />
+        <Sidebar step={step} />
       </div>
       <div className="container--main">
-        <Main activeStep={activeStep} />
+        <Main step={step} />
       </div>
     </div>
   );

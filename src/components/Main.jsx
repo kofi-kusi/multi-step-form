@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 
 import Step1 from "../steps/Step1";
 import Step2 from "../steps/Step2";
@@ -6,20 +5,21 @@ import Step3 from "../steps/Step3";
 import Step4 from "../steps/Step4";
 import ErrorPage from "../ErrorPage";
 
-function Main() {
-  const { step } = useParams();
-  const isNotFirstStep = step !== "step1";
+function Main(props) {
+  const isNotFirstStep = props.step !== "step1";
+
+  console.log(props.step);
   let nextStep;
   let prevStep;
-  if (step === "step1") {
+  if (props.step === "step1") {
     nextStep = "/step2";
-  } else if (step === "step2") {
+  } else if (props.step === "step2") {
     nextStep = "/step3";
     prevStep = "/step1";
-  } else if (step === "step3") {
+  } else if (props.step === "step3") {
     nextStep = "/step4";
     prevStep = "/step2";
-  } else if (step === "step4") {
+  } else if (props.step === "step4") {
     prevStep = "/step3";
   } else {
     return (
@@ -28,26 +28,28 @@ function Main() {
   }
   return (
     <>
-      {step === "step2" ? (
+      {props.step === "step2" ? (
         <Step2
           isNotFirstStep={isNotFirstStep}
           nextStep={nextStep}
           prevStep={prevStep}
         />
-      ) : step === "step3" ? (
+      ) : props.step === "step3" ? (
         <Step3
           isNotFirstStep={isNotFirstStep}
           nextStep={nextStep}
           prevStep={prevStep}
         />
-      ) : step === "step4" ? (
+      ) : props.step === "step4" ? (
         <Step4
           isNotFirstStep={isNotFirstStep}
           nextStep={nextStep}
           prevStep={prevStep}
         />
-      ) : (
+      ) : props.step === "step1" ? (
         <Step1 isNotFirstStep={isNotFirstStep} nextStep={nextStep} />
+      ) : (
+        <ErrorPage />
       )}
     </>
   );
