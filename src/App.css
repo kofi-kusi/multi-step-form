@@ -38,6 +38,12 @@
   width: 40px;
   justify-content: center;
   align-items: center;
+  font-family: ubuntu-bold;
+}
+
+.step--number--active {
+  background-color: hsl(206, 94%, 87%);
+  color: hsl(213, 96%, 18%);
 }
 
 .step--info {
@@ -118,9 +124,10 @@ input:active {
 }
 
 .prev-step {
-  text-decoration: none;
+  all: unset;
   color: hsl(213, 96%, 18%);
   margin-right: auto;
   font-family: ubuntu-medium;
   font-size: large;
+  cursor: pointer;
 }
