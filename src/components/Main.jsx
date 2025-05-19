@@ -27,7 +27,7 @@ function Main(props) {
     )
   }
   return (
-    <>
+    <main>
       {props.step === "step2" ? (
         <Step2
           isNotFirstStep={isNotFirstStep}
@@ -51,7 +51,7 @@ function Main(props) {
       ) : (
         <ErrorPage />
       )}
-    </>
+    </main>
   );
 }
 

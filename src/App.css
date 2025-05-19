@@ -61,6 +61,7 @@
 
 
 /* Main content styling */
+
 /* Step 1 */
 .container--main {
   color: hsl(213, 96%, 18%);
@@ -140,4 +141,40 @@ input::after:invalid {
   font-family: ubuntu-medium;
   font-size: large;
   cursor: pointer;
+}
+
+/* step 2 */
+main.plans {
+  margin-bottom: 100px;
+}
+
+.row {
+  display: flex;
+}
+
+.plan-card--section {
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.plan-text--section p, .plan-text--section h3{
+  margin: 0;
+  margin-bottom: 5px;
+} 
+
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;
+  width: 150px;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.plan--timing {
+  display: flex;
+  justify-content: center;
+  background-color: hsl(231, 100%, 99%);
 }
