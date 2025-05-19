@@ -44,6 +44,7 @@
 .step--number--active {
   background-color: hsl(206, 94%, 87%);
   color: hsl(213, 96%, 18%);
+  border: 1px solid hsl(206, 94%, 87%);
 }
 
 .step--info {
@@ -93,10 +94,19 @@ input {
   font-size: 1.1rem;
   padding: 5px 15px;
   color: hsl(213, 96%, 18%);
+  cursor: pointer;
 }
 
-input:active {
-  border: 1px solid hsl(243, 100%, 62%);
+input::placeholder {
+  color: hsl(231, 11%, 63%);
+}
+input:focus {
+  outline: none;
+  border: 1px solid hsl(213, 96%, 18%);
+}
+
+input::after:invalid {
+  border: 1px solid hsl(0, 100%, 67%);
 }
 
 .steps--navigator {
@@ -125,7 +135,7 @@ input:active {
 
 .prev-step {
   all: unset;
-  color: hsl(213, 96%, 18%);
+  color: hsl(231, 11%, 63%);
   margin-right: auto;
   font-family: ubuntu-medium;
   font-size: large;
