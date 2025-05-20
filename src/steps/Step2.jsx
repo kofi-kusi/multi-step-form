@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import StepsNavigator from "../components/StepsNavigator";
 import { selectPlan } from "../constants";
 import { useState } from "react";
+import { clsx } from "clsx"
 
 function Step2(props) {
   const [timing, setTiming] = useState(true)
@@ -45,13 +46,12 @@ function Step2(props) {
           {planElements}
         </div>
         <div className="plan--timing row">
-          <p>Monthly</p>
+          <p className={clsx(isMontly && "active-plan")}>Monthly</p>
           <label className="switch" onChange={switchTiming}>
             <input type="checkbox" />
             <span className="slider round"></span>
           </label>
-          {/* <button onClick={switchTiming}></button> */}
-          <p>Yearly</p>
+          <p className={clsx(isYearly && "active-plan")}>Yearly</p>
         </div>
       </main>
       <StepsNavigator

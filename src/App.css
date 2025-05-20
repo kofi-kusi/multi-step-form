@@ -146,10 +146,19 @@ input::after:invalid {
 /* step 2 */
 main.plans {
   margin-bottom: 100px;
+  
+}
+
+main p {
+  color: hsl(231, 11%, 63%);
 }
 
 .row {
   display: flex;
+}
+
+.active-plan {
+  color: hsl(213, 96%, 18%);
 }
 
 .plan-card--section {
