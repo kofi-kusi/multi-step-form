@@ -8,12 +8,9 @@ function Step1(props) {
     event.preventDefault();
     const formElement = event.currentTarget;
     const formData = new FormData(formElement)
-    const name = formData.get("name")
-    console.log(name)
     formElement.reset()
     navigate(props.nextStep);
   }
-  console.log(props)
   
   return (
     <>
