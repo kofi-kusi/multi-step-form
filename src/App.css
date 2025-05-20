@@ -185,8 +185,8 @@ main.plans {
 .switch {
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 20px;
+  width: 42px;
+  height: 22px;
 }
 
 .switch input { 
@@ -202,7 +202,7 @@ main.plans {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: hsl(213, 96%, 18%);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -210,17 +210,17 @@ main.plans {
 .slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
+  height: 15px;
+  width: 15px;
   left: 2px;
-  bottom: 2px;
+  bottom: 3.5px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: hsl(213, 96%, 18%);
 }
 
 input:focus + .slider {
