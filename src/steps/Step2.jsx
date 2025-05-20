@@ -6,6 +6,7 @@ import { clsx } from "clsx"
 
 function Step2(props) {
   const [timing, setTiming] = useState(true)
+  const [selected, setSelected] = useState(1)
 
   const isMontly = timing === true
   const isYearly = timing !== true
@@ -14,9 +15,16 @@ function Step2(props) {
     setTiming(prev => !prev)
   }
 
+  function handleSelect(e, id) {
+    e.preventDefault();
+    setSelected(id)
+  }
+
   const planElements = selectPlan.map((plan) => {
+    const isSelected = plan.id === selected
     return (
-      <div className="plan-card" key={plan.id}>
+      <div className={clsx("plan-card", isSelected && "selected-plan")} key={plan.id} onClick={(e) => handleSelect(e, plan.id)}
+      >
         <div className="plan-icon">
           <img src={plan.icon} alt={plan.title}/>
         </div>
