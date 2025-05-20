@@ -8,7 +8,6 @@ import ErrorPage from "../ErrorPage";
 function Main(props) {
   const isNotFirstStep = props.step !== "step1";
 
-  console.log(props.step);
   let nextStep;
   let prevStep;
   if (props.step === "step1") {
