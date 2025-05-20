@@ -46,7 +46,11 @@ function Step2(props) {
         </div>
         <div className="plan--timing row">
           <p>Monthly</p>
-          <button onClick={switchTiming}></button>
+          <label className="switch">
+            <input type="checkbox" />
+            <span className="slider round"></span>
+          </label>
+          {/* <button onClick={switchTiming}></button> */}
           <p>Yearly</p>
         </div>
       </main>
