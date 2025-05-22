@@ -1,14 +1,19 @@
 import Header from "../components/Header";
 import StepsNavigator from "../components/StepsNavigator";
 import { useNavigate } from "react-router-dom";
+import { userFormData } from "../data";
+
+
 function Step1(props) {
+  // const [profile, setProfile] = useState()
   const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
     const formElement = event.currentTarget;
-    const formData = new FormData(formElement)
-    formElement.reset()
+    const formData = new FormData(formElement)    
+    
+    // formElement.reset()
     navigate(props.nextStep);
   }
   
