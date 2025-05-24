@@ -1,5 +1,4 @@
 import Header from "../components/Header";
-import StepsNavigator from "../components/StepsNavigator";
 import { useNavigate } from "react-router-dom";
 
 
