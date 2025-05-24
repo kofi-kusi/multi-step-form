@@ -1,44 +1,63 @@
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
 import { selectPlan } from "../constants";
 import { useState } from "react";
-import { clsx } from "clsx"
+import { clsx } from "clsx";
+import { useNavigate } from "react-router-dom";
+import { userData } from "../data";
 
-function Step2(props) {
-  const [timing, setTiming] = useState(true)
-  const [selected, setSelected] = useState(1)
-
+function Step2() {
+  const [timing, setTiming] = useState(true);
+  const [selected, setSelected] = useState(1);
   const navigate = useNavigate()
 
-  const isMontly = timing === true
-  const isYearly = timing !== true
+  const isMontly = timing === true;
+  const isYearly = timing !== true;
 
-  function switchTiming() {
-    setTiming(prev => !prev)
-  }
+  function handleNext(event) {
+    event.preventDefault()
 
-  function handleSelect(e, id) {
-    e.preventDefault();
-    setSelected(id)
-  }
+    userData.at(1).plan = selectedPlanDetails
+    console.log(userData)
 
-  function handleNext(e) {
-    e.preventDefault()
     navigate("/step3")
   }
 
-  function handlePrev(e) {
-    e.preventDefault()
+  function handlePrev(event) {
+    event.preventDefault()
     navigate("/step1")
   }
 
+  const selectedPlan = selectPlan.find((plan) => plan.id === selected);
+
+  const selectedPlanDetails = {
+    id: selectedPlan?.id,
+    title: selectedPlan?.title,
+    billingType: timing ? "monthly" : "yearly",
+    price: timing ? selectedPlan?.priceMonth : selectedPlan?.priceYear,
+    free: timing ? null : selectedPlan?.free,
+  };
+
+
+  function switchTiming() {
+    setTiming((prev) => !prev);
+  }
+
   const planElements = selectPlan.map((plan) => {
-    const isSelected = plan.id === selected
+    const isSelected = plan.id === selected;
+
+    function handleSelect(e, id) {
+      e.preventDefault();
+      setSelected(id);
+    }
+
     return (
-      <div className={clsx("plan-card", isSelected && "selected-plan")} key={plan.id} onClick={(e) => handleSelect(e, plan.id)}
+      <div
+        className={clsx("plan-card", isSelected && "selected-plan")}
+        key={plan.id}
+        onClick={(e) => handleSelect(e, plan.id)}
       >
         <div className="plan-icon">
-          <img src={plan.icon} alt={plan.title}/>
+          <img src={plan.icon} alt={plan.title} />
         </div>
         <div className="plan-text--section">
           <h3 className="plan-tilte">{plan.title}</h3>
@@ -46,25 +65,25 @@ function Step2(props) {
             {isMontly && <p>{plan.priceMonth}</p>}
             {isYearly && (
               <>
-              <p>{plan.priceYear}</p>
-              <p>{plan.free}</p>
+                <p>{plan.priceYear}</p>
+                <p>{plan.free}</p>
               </>
             )}
           </div>
         </div>
       </div>
-    )
-  })
+    );
+  });
+
   return (
     <>
-      <Header 
+      <Header
         title="Select your plan"
         instructions="You have the option for montly or yearly billing"
       />
-      <main className="plans">
-        <div className="plan-card--section row">
-          {planElements}
-        </div>
+
+      <form className="plans" onSubmit={handleNext}>
+        <div className="plan-card--section row">{planElements}</div>
         <div className="plan--timing row">
           <p className={clsx(isMontly && "active-plan")}>Monthly</p>
           <label className="switch" onChange={switchTiming}>
@@ -73,11 +92,11 @@ function Step2(props) {
           </label>
           <p className={clsx(isYearly && "active-plan")}>Yearly</p>
         </div>
-      </main>
-      < div className="steps--navigator">
-      <button className="prev-step" onClick={(e)=>handlePrev(e)}>Go back</button>
-      <button className="next-step" onClick={(e)=>handleNext(e)}>Next Step</button>
-    </div>
+      <div className="steps--navigator">
+        <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
+        <button className="next-step" >Next Step</button>
+      </div>
+      </form>
     </>
   );
 }
