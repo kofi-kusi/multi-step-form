@@ -76,13 +76,11 @@ function Step2() {
   });
 
   return (
-    <>
+    <form className="plans" onSubmit={handleNext}>
       <Header
         title="Select your plan"
         instructions="You have the option for montly or yearly billing"
       />
-
-      <form className="plans" onSubmit={handleNext}>
         <div className="plan-card--section row">{planElements}</div>
         <div className="plan--timing row">
           <p className={clsx(isMontly && "active-plan")}>Monthly</p>
@@ -96,8 +94,7 @@ function Step2() {
         <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
         <button className="next-step" >Next Step</button>
       </div>
-      </form>
-    </>
+    </form>
   );
 }
 

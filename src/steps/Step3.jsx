@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Step3() {
   const [selected, setSelected] = useState(false);
-  const [selectedAddOn, setSelectedAddOn] = useState([1, 2]);
+  const [selectedAddOn, setSelectedAddOn] = useState([]);
 
   const navigate = useNavigate();
 
@@ -63,7 +63,7 @@ function Step3() {
     );
   });
   return (
-    <>
+    <form className="plans" onSubmit={handleNext}>
       <Header
         title="Pick add-ons"
         instructions="Add-ons help enhance your gaming experience."
@@ -73,7 +73,7 @@ function Step3() {
         <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
         <button className="next-step" onClick={(e) => handleNext(e)}>Next Step</button>
       </div>
-    </>
+    </form>
   );
 }
 
