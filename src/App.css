@@ -61,16 +61,28 @@
 
 
 /* Main content styling */
-header {
-  margin-bottom: 50px;
-}
-
-/* Step 1 */
 .container--main {
   color: var(--marine-blue);
   padding: 0 30px;
   width: 75%;
+  height: 100%;
 }
+
+ form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: inherit;
+ }
+
+ main {
+  height: inherit;
+ }
+
+ form .steps--navigator {
+  margin-top: auto;
+ }
+/* Step 1 */
 
 .instructions {
   color: var(--cool-gray);
@@ -81,7 +93,6 @@ header {
   margin-bottom: 30px;
   
 }
-
 
 input {
   display: block;
@@ -110,7 +121,6 @@ input::after:invalid {
 }
 
 .steps--navigator {
-  margin-top: auto;
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -143,6 +153,10 @@ input::after:invalid {
   cursor: pointer;
 }
 
+.prev-step:hover {
+  color: var(--marine-blue);
+}
+
 /* step 2 */
 
 
@@ -173,11 +187,11 @@ main p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 180px;
   width: 150px;
   border: 1px solid var(--light-gray);
   border-radius: 10px;
   padding: 20px;
+  gap: 40px;
 }
 
 .selected-plan {
