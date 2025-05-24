@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import StepsNavigator from "../components/StepsNavigator";
+import { useNavigate } from "react-router-dom";
 import { selectPlan } from "../constants";
 import { useState } from "react";
 import { clsx } from "clsx"
@@ -7,6 +7,8 @@ import { clsx } from "clsx"
 function Step2(props) {
   const [timing, setTiming] = useState(true)
   const [selected, setSelected] = useState(1)
+
+  const navigate = useNavigate()
 
   const isMontly = timing === true
   const isYearly = timing !== true
@@ -18,6 +20,16 @@ function Step2(props) {
   function handleSelect(e, id) {
     e.preventDefault();
     setSelected(id)
+  }
+
+  function handleNext(e) {
+    e.preventDefault()
+    navigate("/step3")
+  }
+
+  function handlePrev(e) {
+    e.preventDefault()
+    navigate("/step1")
   }
 
   const planElements = selectPlan.map((plan) => {
@@ -62,11 +74,10 @@ function Step2(props) {
           <p className={clsx(isYearly && "active-plan")}>Yearly</p>
         </div>
       </main>
-      <StepsNavigator
-        isNotFirstStep={props.isNotFirstStep} 
-        nextStep={props.nextStep}
-        prevStep={props.prevStep}
-      />
+      < div className="steps--navigator">
+      <button className="prev-step" onClick={(e)=>handlePrev(e)}>Go back</button>
+      <button className="next-step" onClick={(e)=>handleNext(e)}>Next Step</button>
+    </div>
     </>
   );
 }
