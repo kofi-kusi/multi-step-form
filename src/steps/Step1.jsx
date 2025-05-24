@@ -11,7 +11,7 @@ function Step1() {
     event.preventDefault();
     const formElement = event.currentTarget;
     const formData = new FormData(formElement)    
-    
+    console.log(Object.fromEntries(formData.entries()))
     // formElement.reset()
     navigate("/step2");
   }
