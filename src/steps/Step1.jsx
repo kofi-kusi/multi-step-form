@@ -1,15 +1,19 @@
 import Header from "../components/Header";
 import StepsNavigator from "../components/StepsNavigator";
 import { useNavigate } from "react-router-dom";
-function Step1(props) {
+
+
+function Step1() {
+  // const [profile, setProfile] = useState()
   const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
     const formElement = event.currentTarget;
-    const formData = new FormData(formElement)
-    formElement.reset()
-    navigate(props.nextStep);
+    const formData = new FormData(formElement)    
+    
+    // formElement.reset()
+    navigate("/step2");
   }
   
   return (
@@ -26,7 +30,7 @@ function Step1(props) {
             name="name"
             id="name"
             placeholder="e.g.kofi kusi"
-            required
+            
           />
         </div>
 
@@ -37,7 +41,7 @@ function Step1(props) {
             name="email"
             id="email"
             placeholder="e.g kofi.kusi@example.com"
-            required
+            
           />
         </div>
 
@@ -45,7 +49,7 @@ function Step1(props) {
           <label htmlFor="phone">Phone Number</label>
           <input type="tel" name="phone" id="phone" 
           placeholder="e.g. +233 123 456 789"
-          required
+          
           />
         </div>
         <div className="steps--navigator">
