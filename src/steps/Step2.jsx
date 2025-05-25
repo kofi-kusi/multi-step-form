@@ -92,7 +92,7 @@ function Step2() {
         </div>
       <div className="steps--navigator">
         <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
-        <button className="next-step" >Next Step</button>
+        <button className="next-step" onClick={(e) => handleNext(e)}>Next Step</button>
       </div>
     </form>
   );
