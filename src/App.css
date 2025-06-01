@@ -84,9 +84,13 @@
  }
 /* Step 1 */
 
+header {
+  margin: 40px 0;
+}
 .instructions {
   color: var(--cool-gray);
   font-family: ubuntu-medium;
+  margin-top: 10px;
 }
 
 .form--input {
@@ -311,4 +315,39 @@ input:checked + .slider:before {
 
 .price {
   color: var(--purplish-blue);
+}
+
+/* step4 */
+.summary {
+  background-color: var(--magnolia);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.summary--plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.change-btn {
+  color: var(--cool-gray);
+}
+
+.summary--plan h3 {
+  margin-bottom: 10px;
+}
+
+.add-ons-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.total {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
