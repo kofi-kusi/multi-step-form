@@ -351,3 +351,27 @@ input:checked + .slider:before {
   display: flex;
   justify-content: space-between;
 }
+
+.thankYou {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 30px;
+  
+}
+
+.thank-you-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thank-you-text {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.thank-you-text h1 {
+  margin-bottom: 20px;
+}

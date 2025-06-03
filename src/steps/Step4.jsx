@@ -1,13 +1,16 @@
+import { useState } from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import thankYou from "../assets/images/icon-thank-you.svg"
 
 function Step4() {
     const navigate = useNavigate()
+    const [isConfirmed, setIsConfirmed] = useState(false)
 
     function handleNext(event) {
       event.preventDefault()
-      navigate("/step3")
+      setIsConfirmed(prev => !prev)
     }
   
     function handlePrev(event) {
@@ -17,6 +20,19 @@ function Step4() {
 
   return (
     <form>
+      { isConfirmed ? 
+      <div className="thankYou">
+        <div>
+          <div className="thank-you-img">
+            <img src={thankYou} alt="thank you imgage" />
+          </div>
+          <div className="thank-you-text">
+            <h1>Thank you!</h1>
+            <p>Thanks for confirming your subscription! We hompe you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+          </div>
+        </div>
+        
+      </div> : <>
       <Header 
         title="Finish up"
         instructions="Double-check everything looks OK before confirming."
@@ -53,6 +69,7 @@ function Step4() {
           <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
           <button className="next-step" onClick={(e) => handleNext(e)}>Next Step</button>
         </div>
+        </>}
     </form>
   );
 }
