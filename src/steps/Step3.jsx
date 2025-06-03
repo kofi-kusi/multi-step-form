@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Step3() {
   const [selected, setSelected] = useState(false);
-  const [selectedAddOn, setSelectedAddOn] = useState([]);
+  const [selectedAddOn, setSelectedAddOn] = useState([1, 2]);
 
   const navigate = useNavigate();
 
