@@ -84,9 +84,13 @@
  }
 /* Step 1 */
 
+header {
+  margin: 40px 0;
+}
 .instructions {
   color: var(--cool-gray);
   font-family: ubuntu-medium;
+  margin-top: 10px;
 }
 
 .form--input {
@@ -281,7 +285,7 @@ input:checked + .slider:before {
   height: 20px;
   width: 20px;
   border-radius: 15px;
-  
+  accent-color: var(--purplish-blue);
 }
 
 .add-on input:checked {
@@ -311,4 +315,63 @@ input:checked + .slider:before {
 
 .price {
   color: var(--purplish-blue);
+}
+
+/* step4 */
+.summary {
+  background-color: var(--magnolia);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.summary--plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.change-btn {
+  color: var(--cool-gray);
+}
+
+.summary--plan h3 {
+  margin-bottom: 10px;
+}
+
+.add-ons-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.total {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.thankYou {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 30px;
+  
+}
+
+.thank-you-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thank-you-text {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.thank-you-text h1 {
+  margin-bottom: 20px;
 }
