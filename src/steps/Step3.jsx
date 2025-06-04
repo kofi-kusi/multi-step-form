@@ -5,7 +5,6 @@ import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
 function Step3({ setformData }) {
-  const [selected, setSelected] = useState(false);
   const [selectedAddOn, setSelectedAddOn] = useState([1, 2]);
 
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ function Step3({ setformData }) {
 
 
   function handleSelect(e, id) {
-    setSelected((prev) => !prev);
     setSelectedAddOn((prev) => {
       if (prev.includes(id)) {
         return prev.filter((addOn) => addOn !== id);
@@ -39,7 +37,6 @@ function Step3({ setformData }) {
   const selectedAddOnsData = addOns.filter((addOn) =>
     selectedAddOn.includes(addOn.id)
   );
-  console.log(selectedAddOnsData, selected);
 
   const addOnsElements = addOns.map((addOn) => {
     const isSelected = selectedAddOn.includes(addOn.id);
