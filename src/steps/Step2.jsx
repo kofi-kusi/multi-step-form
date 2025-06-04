@@ -35,7 +35,8 @@ function Step2({ setformData }) {
     id: selectedPlan?.id,
     title: selectedPlan?.title,
     billingType: timing ? "monthly" : "yearly",
-    price: timing ? selectedPlan?.priceMonth : selectedPlan?.priceYear,
+    price: timing ? selectedPlan?.monthAmount : selectedPlan?.yearAmount,
+    priceText: timing ? selectedPlan?.priceMonth : selectedPlan?.priceYear,
     free: timing ? null : selectedPlan?.free,
   };
 
