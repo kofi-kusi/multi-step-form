@@ -1,15 +1,17 @@
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
-function Step1() {
+function Step1( { setformData}) {
   // const [profile, setProfile] = useState()
   const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
     const formElement = event.currentTarget;
-    const formData = new FormData(formElement);
-    console.log(Object.fromEntries(formData.entries()));
+    const personalInfo = new FormData(formElement);
+    setformData(prev => ({
+      ...prev,
+      personalInfo: Object.fromEntries(personalInfo)    }))
     // formElement.reset()
     navigate("/step2");
   }

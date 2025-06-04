@@ -4,7 +4,7 @@ import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
-function Step3() {
+function Step3({ setformData }) {
   const [selected, setSelected] = useState(false);
   const [selectedAddOn, setSelectedAddOn] = useState([1, 2]);
 
@@ -12,6 +12,10 @@ function Step3() {
 
   function handleNext(event) {
     event.preventDefault();
+    setformData((prev) => ({
+      ...prev,
+      addOns: selectedAddOnsData,
+    }));
     navigate("/step4");
   }
 

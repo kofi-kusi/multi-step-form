@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import thankYou from "../assets/images/icon-thank-you.svg"
 
-function Step4() {
+function Step4({ formData }) {
     const navigate = useNavigate()
     const [isConfirmed, setIsConfirmed] = useState(false)
 
@@ -17,6 +17,8 @@ function Step4() {
       event.preventDefault()
       navigate("/step3")
     }
+
+    console.log(formData)
 
   return (
     <form>

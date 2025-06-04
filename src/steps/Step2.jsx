@@ -3,9 +3,8 @@ import { selectPlan } from "../constants";
 import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
-import { userData } from "../data";
 
-function Step2() {
+function Step2({ setformData }) {
   const [timing, setTiming] = useState(true);
   const [selected, setSelected] = useState(1);
   const navigate = useNavigate()
@@ -16,8 +15,11 @@ function Step2() {
   function handleNext(event) {
     event.preventDefault()
 
-    userData.at(1).plan = selectedPlanDetails
-    console.log(userData)
+    setformData((prev) => ({
+      ...prev,
+      plan: selectedPlanDetails,
+    }));
+    // formElement.reset()
 
     navigate("/step3")
   }
