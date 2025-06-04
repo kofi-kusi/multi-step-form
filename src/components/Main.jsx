@@ -6,28 +6,32 @@ import Step4 from "../steps/Step4";
 import ErrorPage from "../ErrorPage";
 
 function Main(props) {
-  const [storage, setStorage] = useState();
+  const [formData, setformData] = useState({
+    personalInfo: {},
+    plan: {},
+    addOns: [],
+  });
   return (
     <main>
       {props.step === "step2" ? (
         <Step2
-          setStorage={setStorage}
-          storage={storage}
+          setformData={setformData}
+          formData={formData}
         />
       ) : props.step === "step3" ? (
         <Step3
-          setStorage={setStorage}
-          storage={storage}
+          setformData={setformData}
+          formData={formData}
         />
       ) : props.step === "step4" ? (
         <Step4
-          setStorage={setStorage}
-          storage={storage}
+          setformData={setformData}
+          formData={formData}
         />
       ) : props.step === "step1" ? (
         <Step1  
-          setStorage={setStorage}
-          storage={storage}
+          setformData={setformData}
+          formData={formData}
         />
       ) : (
         <ErrorPage />
