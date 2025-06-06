@@ -4,13 +4,22 @@ import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
-function Step3({ setformData }) {
+function Step3({ setformData, timing }) {
   const [selectedAddOn, setSelectedAddOn] = useState([1, 2]);
 
   const navigate = useNavigate();
 
   function handleNext(event) {
     event.preventDefault();
+    // Map selected add-ons to include the correct price based on timing
+    const selectedAddOnsData = addOns
+      .filter((addOn) => selectedAddOn.includes(addOn.id))
+      .map((addOn) => ({
+        ...addOn,
+        price: timing ? addOn.priceMonth : addOn.priceYear,
+        priceText: timing ? addOn.priceMonth : addOn.priceYear, // or use a formatted string if available
+      }));
+
     setformData((prev) => ({
       ...prev,
       addOns: selectedAddOnsData,
@@ -23,7 +32,6 @@ function Step3({ setformData }) {
     navigate("/step2");
   }
 
-
   function handleSelect(e, id) {
     setSelectedAddOn((prev) => {
       if (prev.includes(id)) {
@@ -34,12 +42,10 @@ function Step3({ setformData }) {
     });
   }
 
-  const selectedAddOnsData = addOns.filter((addOn) =>
-    selectedAddOn.includes(addOn.id)
-  );
 
   const addOnsElements = addOns.map((addOn) => {
     const isSelected = selectedAddOn.includes(addOn.id);
+    const price = timing ? addOn.priceMonth : addOn.priceYear;
     return (
       <div
         className={clsx("add-on", isSelected && "selected-plan")}
@@ -59,7 +65,7 @@ function Step3({ setformData }) {
             </div>
           </label>
         </div>
-        <p className="price">{addOn.priceMonth}</p>
+        <p className="price">{price}</p>
       </div>
     );
   });
@@ -71,8 +77,12 @@ function Step3({ setformData }) {
       />
       {addOnsElements}
       <div className="steps--navigator">
-        <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
-        <button className="next-step" onClick={(e) => handleNext(e)}>Next Step</button>
+        <button className="prev-step" onClick={(e) => handlePrev(e)}>
+          Go back
+        </button>
+        <button className="next-step" onClick={(e) => handleNext(e)}>
+          Next Step
+        </button>
       </div>
     </form>
   );
