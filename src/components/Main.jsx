@@ -6,20 +6,33 @@ import Step4 from "../steps/Step4";
 import ErrorPage from "../ErrorPage";
 
 function Main(props) {
+  const [timing, setTiming] = useState(true);
   const [formData, setformData] = useState({
     personalInfo: {},
     plan: {},
     addOns: [],
   });
+  
+  const isMontly = timing === true;
+  const isYearly = timing !== true;
+
   return (
     <main>
       {props.step === "step2" ? (
         <Step2
+          timing={timing}
+          setTiming={setTiming}
+          isMontly={isMontly}
+          isYearly={isYearly}
           setformData={setformData}
           formData={formData}
         />
       ) : props.step === "step3" ? (
         <Step3
+          timing={timing}
+          setTiming={setTiming}
+          isMontly={isMontly}
+          isYearly={isYearly}
           setformData={setformData}
           formData={formData}
         />

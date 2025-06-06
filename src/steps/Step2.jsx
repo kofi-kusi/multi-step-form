@@ -4,13 +4,9 @@ import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
-function Step2({ setformData }) {
-  const [timing, setTiming] = useState(true);
+function Step2({ setformData, timing, setTiming, isMontly, isYearly }) {
   const [selected, setSelected] = useState(1);
   const navigate = useNavigate()
-
-  const isMontly = timing === true;
-  const isYearly = timing !== true;
 
   function handleNext(event) {
     event.preventDefault()
