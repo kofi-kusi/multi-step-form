@@ -7,11 +7,14 @@ import ErrorPage from "../ErrorPage";
 
 function Main(props) {
   const [timing, setTiming] = useState(true);
+  const [totalPrice, setTotalPrice] = useState(0)
   const [formData, setformData] = useState({
     personalInfo: {},
     plan: {},
     addOns: [],
   });
+
+  
   
   const isMontly = timing === true;
   const isYearly = timing !== true;
@@ -20,6 +23,7 @@ function Main(props) {
     <main>
       {props.step === "step2" ? (
         <Step2
+          setTotalPrice={setTotalPrice}
           timing={timing}
           setTiming={setTiming}
           isMontly={isMontly}
@@ -29,6 +33,7 @@ function Main(props) {
         />
       ) : props.step === "step3" ? (
         <Step3
+          setTotalPrice={setTotalPrice}
           timing={timing}
           setTiming={setTiming}
           isMontly={isMontly}
@@ -38,6 +43,9 @@ function Main(props) {
         />
       ) : props.step === "step4" ? (
         <Step4
+          totalPrice={totalPrice}
+          setTotalPrice={setTotalPrice}
+          timing={timing}
           setformData={setformData}
           formData={formData}
         />
