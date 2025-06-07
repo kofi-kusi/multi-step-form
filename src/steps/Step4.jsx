@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import thankYou from "../assets/images/icon-thank-you.svg"
 
-function Step4() {
+function Step4({ formData, timing, totalPrice, setTotalPrice }) { 
     const navigate = useNavigate()
     const [isConfirmed, setIsConfirmed] = useState(false)
 
@@ -15,7 +15,28 @@ function Step4() {
   
     function handlePrev(event) {
       event.preventDefault()
+      setTotalPrice(0);
       navigate("/step3")
+    }
+
+    console.log(formData)
+
+    // Calculate total price based on plan and add-ons
+    // const totalPrice = formData.plan.price + formData.addOns.reduce((acc, addOn) => acc + timing ? addOn.monthAmount : addOn.yearAmount, 0);
+
+    const addOnsElements = formData.addOns.map((addOn) => {
+      return (
+        <div className="add-ons-summary" key={addOn.id}>
+          <p>{addOn.value}</p>
+          <h4>{addOn.priceText}</h4>
+        </div>
+      );
+    }
+    );
+
+    function handleClick() {
+      setTotalPrice(0);
+      
     }
 
   return (
@@ -41,29 +62,35 @@ function Step4() {
         <div className="summary">
           <div className="summary--plan">
             <div>
-              <h3>Arcade(Yearly)</h3>
-              <Link to="/step2" className="change-btn">Change</Link>
+              <h3>{formData.plan.title + " "}
+                (
+                {formData.plan.billingType.slice(0, 1).toUpperCase() + formData.plan.billingType.slice(1)}
+                )</h3>
+              <Link to="/step2" className="change-btn" onClick={handleClick}>Change</Link>
             </div>
             <div>
-              <h3>$9/yr</h3>
+              <h3>{formData.plan.priceText}</h3>
             </div>
           </div>
           <hr />
           <div className="summary--add-ons">
-            <div className="add-ons-summary">
-              <p>Online service</p>
-              <h4>+$10/yr</h4>
-            </div>
-            <div className="add-ons-summary">
-              <p>Larger storage</p>
-              <h4>+$20/yr</h4>
-            </div>
+            {addOnsElements}
           </div>
         </div>
-        <div className="total">
-          <p>Totoal(per monthly)</p>
-          <h2>+$12/mo</h2>
-        </div>
+        
+          {
+          timing ?
+              
+              <div className="total">
+              <p>Total(per month)</p>
+              <h3>{ totalPrice}</h3>
+              </div>
+            : <div className="total">
+              <p>Total(per year)</p>
+              <h3>${ totalPrice }/{timing ? "mo" : "yr"}</h3>
+              </div>
+          }
+          
       </main>
       <div className="steps--navigator">
           <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>

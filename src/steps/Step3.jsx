@@ -4,14 +4,35 @@ import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
-function Step3() {
-  const [selected, setSelected] = useState(false);
+function Step3({ setformData, timing, setTotalPrice }) {
   const [selectedAddOn, setSelectedAddOn] = useState([1, 2]);
 
   const navigate = useNavigate();
 
   function handleNext(event) {
     event.preventDefault();
+    // Map selected add-ons to include the correct price based on timing
+    const selectedAddOnsData = addOns
+      .filter((addOn) => selectedAddOn.includes(addOn.id))
+      .map((addOn) => ({
+        ...addOn,
+        price: timing ? addOn.monthAmount : addOn.yearAmount,
+        priceText: timing ? addOn.priceMonth : addOn.priceYear,
+      }));
+
+    // Calculate total price of selected add-ons
+    const addOnsTotal = selectedAddOnsData.reduce(
+      (sum, addOn) => sum + Number(addOn.price),
+      0
+    );
+
+    setformData((prev) => ({
+      ...prev,
+      addOns: selectedAddOnsData,
+    }));
+
+    // Add add-ons total to the overall total price
+    setTotalPrice((prevTotal) => prevTotal + addOnsTotal);
     navigate("/step4");
   }
 
@@ -20,9 +41,7 @@ function Step3() {
     navigate("/step2");
   }
 
-
   function handleSelect(e, id) {
-    setSelected((prev) => !prev);
     setSelectedAddOn((prev) => {
       if (prev.includes(id)) {
         return prev.filter((addOn) => addOn !== id);
@@ -32,13 +51,10 @@ function Step3() {
     });
   }
 
-  const selectedAddOnsData = addOns.filter((addOn) =>
-    selectedAddOn.includes(addOn.id)
-  );
-  console.log(selectedAddOnsData, selected);
-
   const addOnsElements = addOns.map((addOn) => {
     const isSelected = selectedAddOn.includes(addOn.id);
+    const price = timing ? addOn.priceMonth : addOn.priceYear;
+
     return (
       <div
         className={clsx("add-on", isSelected && "selected-plan")}
@@ -58,7 +74,7 @@ function Step3() {
             </div>
           </label>
         </div>
-        <p className="price">{addOn.priceMonth}</p>
+        <p className="price">{price}</p>
       </div>
     );
   });
@@ -70,8 +86,12 @@ function Step3() {
       />
       {addOnsElements}
       <div className="steps--navigator">
-        <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
-        <button className="next-step" onClick={(e) => handleNext(e)}>Next Step</button>
+        <button className="prev-step" onClick={(e) => handlePrev(e)}>
+          Go back
+        </button>
+        <button className="next-step" onClick={(e) => handleNext(e)}>
+          Next Step
+        </button>
       </div>
     </form>
   );

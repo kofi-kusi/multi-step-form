@@ -3,21 +3,20 @@ import { selectPlan } from "../constants";
 import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
-import { userData } from "../data";
 
-function Step2() {
-  const [timing, setTiming] = useState(true);
+function Step2({ setformData, timing, setTiming, isMontly, isYearly, setTotalPrice }) {
   const [selected, setSelected] = useState(1);
   const navigate = useNavigate()
-
-  const isMontly = timing === true;
-  const isYearly = timing !== true;
 
   function handleNext(event) {
     event.preventDefault()
 
-    userData.at(1).plan = selectedPlanDetails
-    console.log(userData)
+    setformData((prev) => ({
+      ...prev,
+      plan: selectedPlanDetails,
+    }));
+    setTotalPrice(prev => prev + selectedPlanDetails.price)
+    // formElement.reset()
 
     navigate("/step3")
   }
@@ -33,7 +32,8 @@ function Step2() {
     id: selectedPlan?.id,
     title: selectedPlan?.title,
     billingType: timing ? "monthly" : "yearly",
-    price: timing ? selectedPlan?.priceMonth : selectedPlan?.priceYear,
+    price: timing ? selectedPlan?.monthAmount : selectedPlan?.yearAmount,
+    priceText: timing ? selectedPlan?.priceMonth : selectedPlan?.priceYear,
     free: timing ? null : selectedPlan?.free,
   };
 
