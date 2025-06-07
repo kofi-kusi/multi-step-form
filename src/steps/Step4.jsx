@@ -83,11 +83,11 @@ function Step4({ formData, timing, totalPrice, setTotalPrice }) {
               
               <div className="total">
               <p>Total(per month)</p>
-              <h3>{ totalPrice}</h3>
+              <h3>${ totalPrice}/mo</h3>
               </div>
             : <div className="total">
               <p>Total(per year)</p>
-              <h3>${ totalPrice }/{timing ? "mo" : "yr"}</h3>
+              <h3>${ totalPrice }/yr</h3>
               </div>
           }
           
