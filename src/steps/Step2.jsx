@@ -4,7 +4,7 @@ import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
-function Step2({ setformData, timing, setTiming, isMontly, isYearly }) {
+function Step2({ setformData, timing, setTiming, isMontly, isYearly, setTotalPrice }) {
   const [selected, setSelected] = useState(1);
   const navigate = useNavigate()
 
@@ -15,6 +15,7 @@ function Step2({ setformData, timing, setTiming, isMontly, isYearly }) {
       ...prev,
       plan: selectedPlanDetails,
     }));
+    setTotalPrice(prev => prev + selectedPlanDetails.price)
     // formElement.reset()
 
     navigate("/step3")

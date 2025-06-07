@@ -4,7 +4,7 @@ import { useState } from "react";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
-function Step3({ setformData, timing }) {
+function Step3({ setformData, timing, setTotalPrice }) {
   const [selectedAddOn, setSelectedAddOn] = useState([1, 2]);
 
   const navigate = useNavigate();
@@ -16,14 +16,23 @@ function Step3({ setformData, timing }) {
       .filter((addOn) => selectedAddOn.includes(addOn.id))
       .map((addOn) => ({
         ...addOn,
-        price: timing ? addOn.priceMonth : addOn.priceYear,
-        priceText: timing ? addOn.priceMonth : addOn.priceYear, // or use a formatted string if available
+        price: timing ? addOn.monthAmount : addOn.yearAmount,
+        priceText: timing ? addOn.priceMonth : addOn.priceYear,
       }));
+
+    // Calculate total price of selected add-ons
+    const addOnsTotal = selectedAddOnsData.reduce(
+      (sum, addOn) => sum + Number(addOn.price),
+      0
+    );
 
     setformData((prev) => ({
       ...prev,
       addOns: selectedAddOnsData,
     }));
+
+    // Add add-ons total to the overall total price
+    setTotalPrice((prevTotal) => prevTotal + addOnsTotal);
     navigate("/step4");
   }
 
@@ -42,10 +51,10 @@ function Step3({ setformData, timing }) {
     });
   }
 
-
   const addOnsElements = addOns.map((addOn) => {
     const isSelected = selectedAddOn.includes(addOn.id);
     const price = timing ? addOn.priceMonth : addOn.priceYear;
+
     return (
       <div
         className={clsx("add-on", isSelected && "selected-plan")}
