@@ -157,6 +157,10 @@ input::after:invalid {
   cursor: pointer;
 }
 
+button.next-step:hover {
+  background-color: var(--purplish-blue);
+}
+
 .prev-step:hover {
   color: var(--marine-blue);
 }
@@ -333,6 +337,10 @@ input:checked + .slider:before {
 
 .change-btn {
   color: var(--cool-gray);
+}
+
+.change-btn:hover {
+  color: var(--purplish-blue);
 }
 
 .summary--plan h3 {

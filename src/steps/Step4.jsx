@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import thankYou from "../assets/images/icon-thank-you.svg"
+import thankYou from "../assets/images/icon-thank-you.svg";
 
 function Step4({ formData, timing, totalPrice, setTotalPrice }) { 
     const navigate = useNavigate()
@@ -94,7 +94,7 @@ function Step4({ formData, timing, totalPrice, setTotalPrice }) {
       </main>
       <div className="steps--navigator">
           <button className="prev-step" onClick={(e) => handlePrev(e)}>Go back</button>
-          <button className="next-step" onClick={(e) => handleNext(e)}>Next Step</button>
+          <button className="next-step" onClick={(e) => handleNext(e)}>Confirm</button>
         </div>
         </>}
     </form>
