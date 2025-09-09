@@ -1,1 +1,2 @@
-[!NOTE] Desktop view only
+> [!NOTE]
+> Desktop view only
